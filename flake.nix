@@ -24,7 +24,10 @@
     } // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
       hydraJobs = (pkgs.myprogram.flake {}).hydraJobs // {
         x86_64-musl.myprogram = (pkgs.pkgsCross.musl64.myprogram.flake {}).packages."myprogram:exe:myprogram";
+        aarch64.myprogram = (pkgs.pkgsCross.aarch64-multiplatform-musl.myprogram.flake {}).packages."myprogram:exe:myprogram";
         aarch64-musl.myprogram = (pkgs.pkgsCross.aarch64-multiplatform-musl.myprogram.flake {}).packages."myprogram:exe:myprogram";
+        armv7.myprogram = (pkgs.pkgsCross.armv7l-hf-multiplatform.pkgsMusl.myprogram.flake {}).packages."myprogram:exe:myprogram";
+        armv7-musl.myprogram = (pkgs.pkgsCross.armv7l-hf-multiplatform.pkgsMusl.myprogram.flake {}).packages."myprogram:exe:myprogram";
       };
     });
 }
